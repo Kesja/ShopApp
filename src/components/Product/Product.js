@@ -9,6 +9,7 @@ const Product = ({title, basePrice, sizes, colors, name}) => {
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [currentSize, setCurrentSize] = useState(sizes[0].name);
 
+
   const getPrice = () => {
     const clickedSize = sizes.find(element => element.name === currentSize)
     

@@ -20,7 +20,7 @@ const OptionSize = ({sizes, setCurrentSize, currentSize}) => {
 
 OptionSize.propTypes={
   sizes: PropTypes.array.isRequired,
-  currentSize: PropTypes.object.isRequired,
+  currentSize: PropTypes.string.isRequired,
   setCurrentSize: PropTypes.func.isRequired,
 };
 
