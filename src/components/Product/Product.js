@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import ProductForm from './ProductForm/ProductForm';
 import ProductImage from './ProductImage/ProductImage';
+import { useMemo } from 'react';
 
 const Product = ({title, basePrice, sizes, colors, name}) => {
 
@@ -10,11 +11,11 @@ const Product = ({title, basePrice, sizes, colors, name}) => {
   const [currentSize, setCurrentSize] = useState(sizes[0].name);
 
 
-  const getPrice = () => {
+  const getPrice = useMemo(() => {
     const clickedSize = sizes.find(element => element.name === currentSize)
     
     return  basePrice + clickedSize.additionalPrice
-  };
+  }, [currentSize, basePrice, sizes]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -33,7 +34,7 @@ const Product = ({title, basePrice, sizes, colors, name}) => {
       <div>
         <header>
           <h2 className={styles.name}>{title}</h2>
-          <span className={styles.price}>Price: {getPrice()}$</span>
+          <span className={styles.price}>Price: {getPrice}$</span>
         </header>
         <ProductForm
           handleSubmit={handleSubmit}
